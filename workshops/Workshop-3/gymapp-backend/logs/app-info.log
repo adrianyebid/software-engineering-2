@@ -1,0 +1,209 @@
+18:12:32.936 [background-preinit] INFO  [] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+18:12:33.042 [main] INFO  [] com.gymapp.GymAppApplication - Starting GymAppApplication using Java 21.0.7 with PID 11044 (C:\Users\ASUS\Desktop\EPAM-COURSE\Spring-boot\spring-boot\target\classes started by ASUS in C:\Users\ASUS\Desktop\EPAM-COURSE\Spring-boot\spring-boot)
+18:12:33.043 [main] INFO  [] com.gymapp.GymAppApplication - The following 1 profile is active: "local"
+18:12:36.913 [main] INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+18:12:37.034 [main] INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 109 ms. Found 4 JPA repository interfaces.
+18:12:37.762 [main] INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+18:12:37.776 [main] INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+18:12:37.778 [main] INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+18:12:37.779 [main] INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+18:12:37.848 [main] INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+18:12:37.849 [main] INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4739 ms
+18:12:38.275 [main] INFO  [] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+18:12:38.344 [main] INFO  [] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.33.Final
+18:12:38.381 [main] INFO  [] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+18:12:38.663 [main] INFO  [] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+18:12:38.687 [main] INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+18:12:38.894 [main] INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@17189618
+18:12:38.896 [main] INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+18:12:38.965 [main] INFO  [] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+18:12:40.012 [main] INFO  [] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+18:12:40.146 [main] INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+18:12:40.499 [main] INFO  [] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+18:12:42.327 [main] INFO  [] o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+18:12:42.383 [main] INFO  [] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+18:12:42.398 [main] INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+18:12:42.417 [main] INFO  [] com.gymapp.GymAppApplication - Started GymAppApplication in 9.912 seconds (process running for 12.192)
+18:12:52.948 [http-nio-8080-exec-1] INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+18:12:52.948 [http-nio-8080-exec-1] INFO  [] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+18:12:52.950 [http-nio-8080-exec-1] INFO  [] o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+18:12:53.014 [http-nio-8080-exec-1] INFO  [b6e35991-9525-4604-90f1-867812d7c81e] c.g.interceptor.LoggingInterceptor - Incoming request: GET /swagger-ui/index.html
+18:12:53.048 [http-nio-8080-exec-1] INFO  [b6e35991-9525-4604-90f1-867812d7c81e] c.g.interceptor.LoggingInterceptor - Response status: 304
+18:12:53.099 [http-nio-8080-exec-2] INFO  [245df13f-0024-4440-abfa-e5c7afdc48b1] c.g.interceptor.LoggingInterceptor - Incoming request: GET /swagger-ui/swagger-ui.css
+18:12:53.103 [http-nio-8080-exec-2] INFO  [245df13f-0024-4440-abfa-e5c7afdc48b1] c.g.interceptor.LoggingInterceptor - Response status: 304
+18:12:53.106 [http-nio-8080-exec-3] INFO  [8beb1909-4408-4c6c-b7d2-d2b81ec8f2b4] c.g.interceptor.LoggingInterceptor - Incoming request: GET /swagger-ui/index.css
+18:12:53.108 [http-nio-8080-exec-4] INFO  [93636b1a-cef0-43a8-b8bb-799fbbadb685] c.g.interceptor.LoggingInterceptor - Incoming request: GET /swagger-ui/swagger-initializer.js
+18:12:53.108 [http-nio-8080-exec-10] INFO  [eecc52db-7391-4b50-abd9-a63dcccc5c66] c.g.interceptor.LoggingInterceptor - Incoming request: GET /swagger-ui/swagger-ui-standalone-preset.js
+18:12:53.110 [http-nio-8080-exec-5] INFO  [4a479326-3c97-450b-8ec7-9811f552377d] c.g.interceptor.LoggingInterceptor - Incoming request: GET /swagger-ui/swagger-ui-bundle.js
+18:12:53.108 [http-nio-8080-exec-3] INFO  [8beb1909-4408-4c6c-b7d2-d2b81ec8f2b4] c.g.interceptor.LoggingInterceptor - Response status: 304
+18:12:53.112 [http-nio-8080-exec-10] INFO  [eecc52db-7391-4b50-abd9-a63dcccc5c66] c.g.interceptor.LoggingInterceptor - Response status: 304
+18:12:53.112 [http-nio-8080-exec-5] INFO  [4a479326-3c97-450b-8ec7-9811f552377d] c.g.interceptor.LoggingInterceptor - Response status: 304
+18:12:53.170 [http-nio-8080-exec-4] INFO  [93636b1a-cef0-43a8-b8bb-799fbbadb685] c.g.interceptor.LoggingInterceptor - Response status: 200
+18:12:53.360 [http-nio-8080-exec-7] INFO  [6ed76315-937b-4b25-8c5a-a997424500d5] c.g.interceptor.LoggingInterceptor - Incoming request: GET /v3/api-docs/swagger-config
+18:12:53.412 [http-nio-8080-exec-7] INFO  [6ed76315-937b-4b25-8c5a-a997424500d5] c.g.interceptor.LoggingInterceptor - Response status: 200
+18:12:53.496 [http-nio-8080-exec-8] INFO  [c52be695-b406-4c85-8728-9e17f110c727] c.g.interceptor.LoggingInterceptor - Incoming request: GET /v3/api-docs
+18:12:55.040 [http-nio-8080-exec-8] INFO  [c52be695-b406-4c85-8728-9e17f110c727] o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 1519 ms
+18:12:55.262 [http-nio-8080-exec-8] INFO  [c52be695-b406-4c85-8728-9e17f110c727] c.g.interceptor.LoggingInterceptor - Response status: 200
+18:17:39.014 [http-nio-8080-exec-10] INFO  [7a59337b-24ec-4448-8c21-17239eb14f7c] c.g.interceptor.LoggingInterceptor - Incoming request: POST /api/v1/trainees
+18:17:39.144 [http-nio-8080-exec-10] INFO  [7a59337b-24ec-4448-8c21-17239eb14f7c] c.g.s.trainee.TraineeServiceImpl - Registering new trainee: test test
+18:17:39.732 [http-nio-8080-exec-10] INFO  [7a59337b-24ec-4448-8c21-17239eb14f7c] c.g.interceptor.LoggingInterceptor - Response status: 201
+18:19:09.252 [http-nio-8080-exec-4] INFO  [02b48652-b66d-488a-9899-84beb799b091] c.g.interceptor.LoggingInterceptor - Incoming request: PUT /api/v1/auth/change-password
+18:19:09.254 [http-nio-8080-exec-4] INFO  [02b48652-b66d-488a-9899-84beb799b091] c.g.interceptor.LoggingInterceptor - Response status: 401
+18:32:19.653 [SpringApplicationShutdownHook] INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+18:32:19.666 [tomcat-shutdown] INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+18:32:19.673 [SpringApplicationShutdownHook] INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+18:32:19.677 [SpringApplicationShutdownHook] INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+18:32:19.684 [SpringApplicationShutdownHook] INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+18:32:40.997 [background-preinit] INFO  [] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+18:32:41.064 [main] INFO  [] com.gymapp.GymAppApplication - Starting GymAppApplication using Java 21.0.7 with PID 15436 (C:\Users\ASUS\Desktop\EPAM-COURSE\Spring-boot\spring-boot\target\classes started by ASUS in C:\Users\ASUS\Desktop\EPAM-COURSE\Spring-boot\spring-boot)
+18:32:41.065 [main] INFO  [] com.gymapp.GymAppApplication - The following 1 profile is active: "local"
+18:32:42.515 [main] INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+18:32:42.619 [main] INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 95 ms. Found 4 JPA repository interfaces.
+18:32:43.411 [main] INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+18:32:43.423 [main] INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+18:32:43.425 [main] INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+18:32:43.425 [main] INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+18:32:43.491 [main] INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+18:32:43.492 [main] INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2368 ms
+18:32:43.877 [main] INFO  [] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+18:32:43.942 [main] INFO  [] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.33.Final
+18:32:44.006 [main] INFO  [] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+18:32:44.411 [main] INFO  [] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+18:32:44.438 [main] INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+18:32:44.589 [main] INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2f3cd727
+18:32:44.591 [main] INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+18:32:44.629 [main] INFO  [] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+18:32:45.590 [main] INFO  [] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+18:32:45.686 [main] INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+18:32:46.015 [main] INFO  [] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+18:32:50.807 [main] INFO  [] o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+18:32:51.013 [main] INFO  [] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+18:32:51.061 [main] INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+18:32:51.109 [main] INFO  [] com.gymapp.GymAppApplication - Started GymAppApplication in 10.52 seconds (process running for 11.198)
+18:33:15.935 [http-nio-8080-exec-1] INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+18:33:15.935 [http-nio-8080-exec-1] INFO  [] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+18:33:15.935 [http-nio-8080-exec-1] INFO  [] o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+18:33:15.999 [http-nio-8080-exec-1] INFO  [0ab0c9a4-dd5d-4e96-aaaf-c39eaa6ed805] c.g.interceptor.LoggingInterceptor - Incoming request: GET /swagger-ui/index.html
+18:33:16.034 [http-nio-8080-exec-1] INFO  [0ab0c9a4-dd5d-4e96-aaaf-c39eaa6ed805] c.g.interceptor.LoggingInterceptor - Response status: 304
+18:33:16.084 [http-nio-8080-exec-2] INFO  [c4eb9ddb-3cba-4570-aaf5-a00e95031d7e] c.g.interceptor.LoggingInterceptor - Incoming request: GET /swagger-ui/swagger-initializer.js
+18:33:16.158 [http-nio-8080-exec-2] INFO  [c4eb9ddb-3cba-4570-aaf5-a00e95031d7e] c.g.interceptor.LoggingInterceptor - Response status: 200
+18:33:16.348 [http-nio-8080-exec-4] INFO  [8cba4f0e-dcbc-42f3-8c58-9ac1d356977d] c.g.interceptor.LoggingInterceptor - Incoming request: GET /v3/api-docs/swagger-config
+18:33:16.371 [http-nio-8080-exec-3] INFO  [e3410c1e-87db-4321-aedb-8ae921f0aa64] c.g.interceptor.LoggingInterceptor - Incoming request: GET /swagger-ui/favicon-32x32.png
+18:33:16.373 [http-nio-8080-exec-3] INFO  [e3410c1e-87db-4321-aedb-8ae921f0aa64] c.g.interceptor.LoggingInterceptor - Response status: 304
+18:33:16.389 [http-nio-8080-exec-4] INFO  [8cba4f0e-dcbc-42f3-8c58-9ac1d356977d] c.g.interceptor.LoggingInterceptor - Response status: 200
+18:33:16.418 [http-nio-8080-exec-6] INFO  [46b1d195-ac1e-4e3c-81bb-aa2563d5bb76] c.g.interceptor.LoggingInterceptor - Incoming request: GET /v3/api-docs
+18:33:17.539 [http-nio-8080-exec-6] INFO  [46b1d195-ac1e-4e3c-81bb-aa2563d5bb76] o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 1102 ms
+18:33:17.638 [http-nio-8080-exec-6] INFO  [46b1d195-ac1e-4e3c-81bb-aa2563d5bb76] c.g.interceptor.LoggingInterceptor - Response status: 200
+18:34:03.544 [http-nio-8080-exec-5] INFO  [6772aa4a-e659-4e32-84cf-da03e3b269bf] c.g.interceptor.LoggingInterceptor - Incoming request: PUT /api/v1/auth/change-password
+18:34:03.544 [http-nio-8080-exec-5] INFO  [6772aa4a-e659-4e32-84cf-da03e3b269bf] c.g.interceptor.LoggingInterceptor - Response status: 401
+18:37:06.414 [http-nio-8080-exec-10] INFO  [4f351ad0-e664-45e8-b662-b1a66d355055] c.g.interceptor.LoggingInterceptor - Incoming request: PUT /api/v1/auth/change-password
+18:37:06.416 [http-nio-8080-exec-10] INFO  [4f351ad0-e664-45e8-b662-b1a66d355055] c.g.interceptor.LoggingInterceptor - Response status: 401
+18:42:20.338 [SpringApplicationShutdownHook] INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+18:42:20.353 [tomcat-shutdown] INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+18:42:20.360 [SpringApplicationShutdownHook] INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+18:42:20.363 [SpringApplicationShutdownHook] INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+18:42:20.367 [SpringApplicationShutdownHook] INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+18:42:27.459 [background-preinit] INFO  [] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+18:42:27.524 [main] INFO  [] com.gymapp.GymAppApplication - Starting GymAppApplication using Java 21.0.7 with PID 9164 (C:\Users\ASUS\Desktop\EPAM-COURSE\Spring-boot\spring-boot\target\classes started by ASUS in C:\Users\ASUS\Desktop\EPAM-COURSE\Spring-boot\spring-boot)
+18:42:27.525 [main] INFO  [] com.gymapp.GymAppApplication - The following 1 profile is active: "local"
+18:42:29.002 [main] INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+18:42:29.108 [main] INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 94 ms. Found 4 JPA repository interfaces.
+18:42:29.883 [main] INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+18:42:29.896 [main] INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+18:42:29.898 [main] INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+18:42:29.898 [main] INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+18:42:29.973 [main] INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+18:42:29.974 [main] INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2391 ms
+18:42:30.385 [main] INFO  [] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+18:42:30.436 [main] INFO  [] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.33.Final
+18:42:30.467 [main] INFO  [] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+18:42:30.726 [main] INFO  [] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+18:42:30.749 [main] INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+18:42:30.891 [main] INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@b671dda
+18:42:30.892 [main] INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+18:42:30.928 [main] INFO  [] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+18:42:31.857 [main] INFO  [] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+18:42:31.948 [main] INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+18:42:32.231 [main] INFO  [] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+18:42:33.792 [main] INFO  [] o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+18:42:33.853 [main] INFO  [] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+18:42:33.869 [main] INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+18:42:33.888 [main] INFO  [] com.gymapp.GymAppApplication - Started GymAppApplication in 6.832 seconds (process running for 7.466)
+18:42:37.650 [http-nio-8080-exec-1] INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+18:42:37.655 [http-nio-8080-exec-1] INFO  [] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+18:42:37.655 [http-nio-8080-exec-1] INFO  [] o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+18:42:37.727 [http-nio-8080-exec-1] INFO  [28fca900-6cf5-4f35-8b32-a3d1ecf8ac26] c.g.interceptor.LoggingInterceptor - Incoming request: GET /swagger-ui/index.html
+18:42:37.761 [http-nio-8080-exec-1] INFO  [28fca900-6cf5-4f35-8b32-a3d1ecf8ac26] c.g.interceptor.LoggingInterceptor - Response status: 304
+18:42:37.812 [http-nio-8080-exec-2] INFO  [ab7c6475-6a95-4ae8-9f49-c7bfa311ff2e] c.g.interceptor.LoggingInterceptor - Incoming request: GET /swagger-ui/swagger-initializer.js
+18:42:37.879 [http-nio-8080-exec-2] INFO  [ab7c6475-6a95-4ae8-9f49-c7bfa311ff2e] c.g.interceptor.LoggingInterceptor - Response status: 200
+18:42:38.004 [http-nio-8080-exec-6] INFO  [6f93866b-6a23-4461-a559-9ae1dba75d91] c.g.interceptor.LoggingInterceptor - Incoming request: GET /v3/api-docs/swagger-config
+18:42:38.049 [http-nio-8080-exec-6] INFO  [6f93866b-6a23-4461-a559-9ae1dba75d91] c.g.interceptor.LoggingInterceptor - Response status: 200
+18:42:38.098 [http-nio-8080-exec-7] INFO  [effdcc1b-fb41-48a3-82b3-387ff1a7d261] c.g.interceptor.LoggingInterceptor - Incoming request: GET /v3/api-docs
+18:42:39.156 [http-nio-8080-exec-7] INFO  [effdcc1b-fb41-48a3-82b3-387ff1a7d261] o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 1030 ms
+18:42:39.271 [http-nio-8080-exec-7] INFO  [effdcc1b-fb41-48a3-82b3-387ff1a7d261] c.g.interceptor.LoggingInterceptor - Response status: 200
+18:43:22.538 [http-nio-8080-exec-5] INFO  [09290d82-2ef5-4cd3-9e8a-7dc22bbc81cb] c.g.interceptor.LoggingInterceptor - Incoming request: PUT /api/v1/auth/change-password
+18:43:23.327 [http-nio-8080-exec-5] INFO  [09290d82-2ef5-4cd3-9e8a-7dc22bbc81cb] c.g.interceptor.LoggingInterceptor - Response status: 200
+18:51:38.807 [SpringApplicationShutdownHook] INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+18:51:38.816 [tomcat-shutdown] INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+18:51:38.823 [SpringApplicationShutdownHook] INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+18:51:38.826 [SpringApplicationShutdownHook] INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+18:51:38.830 [SpringApplicationShutdownHook] INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+20:25:57.080 [background-preinit] INFO  [] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+20:25:57.133 [main] INFO  [] com.gymapp.GymAppApplication - Starting GymAppApplication using Java 21.0.7 with PID 9780 (C:\Users\ASUS\Desktop\EPAM-COURSE\Spring-boot\spring-boot\target\classes started by ASUS in C:\Users\ASUS\Desktop\EPAM-COURSE\Spring-boot\spring-boot)
+20:25:57.134 [main] INFO  [] com.gymapp.GymAppApplication - The following 1 profile is active: "local"
+20:25:58.231 [main] INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+20:25:58.313 [main] INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 66 ms. Found 4 JPA repository interfaces.
+20:25:58.881 [main] INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+20:25:58.893 [main] INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+20:25:58.896 [main] INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+20:25:58.896 [main] INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+20:25:58.962 [main] INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+20:25:58.963 [main] INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1785 ms
+20:25:59.286 [main] INFO  [] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+20:25:59.322 [main] INFO  [] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.33.Final
+20:25:59.347 [main] INFO  [] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+20:25:59.553 [main] INFO  [] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+20:25:59.569 [main] INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+20:25:59.686 [main] INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2f3cd727
+20:25:59.687 [main] INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+20:25:59.721 [main] INFO  [] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+20:26:00.494 [main] INFO  [] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+20:26:00.602 [main] INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+20:26:00.974 [main] INFO  [] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+20:26:02.294 [main] INFO  [] o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+20:26:02.342 [main] INFO  [] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+20:26:02.354 [main] INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+20:26:02.366 [main] INFO  [] com.gymapp.GymAppApplication - Started GymAppApplication in 5.567 seconds (process running for 6.032)
+20:44:49.813 [SpringApplicationShutdownHook] INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+20:44:49.818 [tomcat-shutdown] INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+20:44:49.824 [SpringApplicationShutdownHook] INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+20:44:49.825 [SpringApplicationShutdownHook] INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+20:44:49.828 [SpringApplicationShutdownHook] INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
