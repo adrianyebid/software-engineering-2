@@ -1,0 +1,28 @@
+package com.gymapp.config;
+
+import com.gymapp.interceptor.LoggingInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+
+/**
+ * Web MVC configuration class to set up interceptors and message converters.
+ */
+@Configuration
+public class WebMvcConfig implements WebMvcConfigurer {
+    private final LoggingInterceptor loggingInterceptor;
+
+    @Autowired
+    public WebMvcConfig(LoggingInterceptor loggingInterceptor) {
+        this.loggingInterceptor = loggingInterceptor;
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(loggingInterceptor);
+    }
+
+
+}

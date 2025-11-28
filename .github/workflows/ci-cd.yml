@@ -1,0 +1,28 @@
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Build Java backend
+        run: |
+          cd workshops/workshop4/java-backend
+          ./mvnw clean install
+
+      - name: Run Python tests
+        run: |
+          cd workshops/workshop4/python-backend
+          pip install -r requirements.txt
+          pytest -v
+
+      - name: Build frontend
+        run: |
+          cd workshops/workshop4/frontend
+          npm install
+          npm run build
+
+      - name: Build Docker images
+        run: |
+          cd workshops/workshop4
+          docker compose build
