@@ -22,7 +22,8 @@ jobs:
           distribution: "temurin"
 
       - name: Run Maven tests
-        working-directory: ./java-backend
+        # Ruta corregida: se añade workshops/Workshop-4/
+        working-directory: ./workshops/Workshop-4/java-backend
         run: mvn -B test
 
   python-tests:
@@ -38,34 +39,48 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Cache Python dependencies 🐍
+        # Optimización: Guarda el caché de pip para builds futuros
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('workshops/Workshop-4/python-backend/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
       - name: Install dependencies
-        working-directory: ./python-backend
+        # Ruta corregida: se añade workshops/Workshop-4/
+        working-directory: ./workshops/Workshop-4/python-backend
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Run Pytest
-        working-directory: ./python-backend
+        # Ruta corregida: se añade workshops/Workshop-4/
+        working-directory: ./workshops/Workshop-4/python-backend
         run: pytest
 
   docker-build:
     name: Build Docker Images
     runs-on: ubuntu-latest
+    # Se asegura que las pruebas pasen antes de construir
     needs: [java-tests, python-tests]
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Necesario para usar Docker Buildx
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build Java backend image
-        run: docker build -t java-backend ./Workshop-4/java-backend
+      - name: Build Java backend image ☕
+        # Ruta corregida: usando la ruta completa
+        run: docker build -t java-backend ./workshops/Workshop-4/java-backend
 
-      - name: Build Python backend image
-        run: docker build -t python-backend ./Workshop-4/python-backend
+      - name: Build Python backend image 🐍
+        # Ruta corregida: usando la ruta completa
+        run: docker build -t python-backend ./workshops/Workshop-4/python-backend
 
-      - name: Build Frontend image
-        run: docker build -t frontend ./Workshop-4/frontend
+      - name: Build Frontend image ⚛️
+        # Ruta corregida: usando la ruta completa
+        run: docker build -t frontend ./workshops/Workshop-4/frontend
