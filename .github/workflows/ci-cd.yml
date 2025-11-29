@@ -7,40 +7,56 @@ on:
     branches: ["main"]
 
 jobs:
+
   java-tests:
     name: Test Java Backend
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout the repository source code
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Set up JDK 21
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           java-version: "21"
           distribution: "temurin"
 
+      # Cache Maven dependencies to speed up future builds
+      - name: Cache Maven dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('workshops/Workshop-4/java-backend/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      # Run Maven tests in the Java backend directory
       - name: Run Maven tests
-        # Ruta corregida: se añade workshops/Workshop-4/
         working-directory: ./workshops/Workshop-4/java-backend
         run: mvn -B test
+
+
 
   python-tests:
     name: Test Python Backend
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Set up Python 3.11
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.11"
 
-      - name: Cache Python dependencies 🐍
-        # Optimización: Guarda el caché de pip para builds futuros
+      # Cache pip dependencies
+      - name: Cache Python dependencies
         uses: actions/cache@v3
         with:
           path: ~/.cache/pip
@@ -48,39 +64,51 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
 
+      # Install Python dependencies
       - name: Install dependencies
-        # Ruta corregida: se añade workshops/Workshop-4/
         working-directory: ./workshops/Workshop-4/python-backend
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      # Optional: Run Python linting (can be removed if not needed)
+      - name: Run Python linter
+        working-directory: ./workshops/Workshop-4/python-backend
+        run: |
+          pip install ruff
+          ruff check .
+
+      # Run pytest
       - name: Run Pytest
-        # Ruta corregida: se añade workshops/Workshop-4/
         working-directory: ./workshops/Workshop-4/python-backend
         run: pytest
+
+
 
   docker-build:
     name: Build Docker Images
     runs-on: ubuntu-latest
-    # Se asegura que las pruebas pasen antes de construir
+
+    # Ensures Docker images are only built if all tests pass
     needs: [java-tests, python-tests]
 
     steps:
+      # Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Enable Docker Buildx for more advanced builds
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build Java backend image ☕
-        # Ruta corregida: usando la ruta completa
+      # Build Java backend Docker image
+      - name: Build Java backend image
         run: docker build -t java-backend ./workshops/Workshop-4/java-backend
 
-      - name: Build Python backend image 🐍
-        # Ruta corregida: usando la ruta completa
+      # Build Python backend Docker image
+      - name: Build Python backend image
         run: docker build -t python-backend ./workshops/Workshop-4/python-backend
 
-      - name: Build Frontend image ⚛️
-        # Ruta corregida: usando la ruta completa
+      # Build Frontend Docker image
+      - name: Build Frontend image
         run: docker build -t frontend ./workshops/Workshop-4/frontend
