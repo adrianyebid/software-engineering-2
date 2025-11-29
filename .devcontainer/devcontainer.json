@@ -1,0 +1,33 @@
+// .devcontainer/devcontainer.json
+{
+    // Define el contenedor base para el Codespace (donde correrán VS Code y la terminal)
+    "name": "GymApp Development Environment",
+    "image": "mcr.microsoft.com/devcontainers/universal:latest",
+    
+    // Indica a Codespaces que use tu archivo docker-compose.yml para levantar los servicios
+    "dockerComposeFile": [
+        "docker-compose.yml"
+    ],
+    
+    // Especifica qué servicio de tu compose file usar como contenedor principal 
+    // (donde se ejecutará la terminal de VS Code). Usaremos el frontend como ejemplo.
+    "service": "frontend",
+    
+    // Mapea los puertos definidos en el docker-compose para accederlos desde el navegador/cliente.
+    "forwardPorts": [5432, 8080, 8000, 5173],
+    
+    // Comando para ejecutar después de que los servicios estén listos.
+    // Esto es crucial para iniciar el frontend de React/Vite.
+    "postStartCommand": "npm install && npm run dev", // Asumiendo que npm está en el contenedor 'frontend'
+    
+    // Extensiones recomendadas para el desarrollo
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "vscjava.vscode-java-pack",
+                "ms-python.python",
+                "dbaeumer.vscode-eslint"
+            ]
+        }
+    }
+}

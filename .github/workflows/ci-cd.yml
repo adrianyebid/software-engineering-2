@@ -1,28 +1,71 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
 jobs:
-  build-test-deploy:
+  java-tests:
+    name: Test Java Backend
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Build Java backend
-        run: |
-          cd workshops/workshop4/java-backend
-          ./mvnw clean install
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: "21"
+          distribution: "temurin"
 
-      - name: Run Python tests
+      - name: Run Maven tests
+        working-directory: ./java-backend
+        run: mvn -B test
+
+  python-tests:
+    name: Test Python Backend
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        working-directory: ./python-backend
         run: |
-          cd workshops/workshop4/python-backend
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pytest -v
 
-      - name: Build frontend
-        run: |
-          cd workshops/workshop4/frontend
-          npm install
-          npm run build
+      - name: Run Pytest
+        working-directory: ./python-backend
+        run: pytest
 
-      - name: Build Docker images
-        run: |
-          cd workshops/workshop4
-          docker compose build
+  docker-build:
+    name: Build Docker Images
+    runs-on: ubuntu-latest
+    needs: [java-tests, python-tests]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Necesario para usar Docker Buildx
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Java backend image
+        run: docker build -t java-backend ./Workshop-4/java-backend
+
+      - name: Build Python backend image
+        run: docker build -t python-backend ./Workshop-4/python-backend
+
+      - name: Build Frontend image
+        run: docker build -t frontend ./Workshop-4/frontend

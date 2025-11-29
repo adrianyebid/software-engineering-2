@@ -1132,3 +1132,9 @@
 13:21:20.668 [main] INFO  [9e111164-5af1-40e6-82a2-3515d56f5849] c.g.interceptor.LoggingInterceptor - Incoming request: GET /api/test
 13:21:20.675 [main] INFO  [test-id] c.g.interceptor.LoggingInterceptor - Response status: 500
 13:21:20.680 [main] INFO  [test-id] c.g.interceptor.LoggingInterceptor - Response status: 200
+20:29:03.967 [main] INFO  [6c3da867-850d-4341-b3c1-b14296672c17] c.g.interceptor.LoggingInterceptor - Incoming request: GET /api/test
+20:29:03.970 [main] INFO  [test-id] c.g.interceptor.LoggingInterceptor - Response status: 500
+20:29:03.972 [main] INFO  [test-id] c.g.interceptor.LoggingInterceptor - Response status: 200
+20:36:32.821 [main] INFO  [655d12e5-211c-4cfb-bf3b-55c85764e37c] c.g.interceptor.LoggingInterceptor - Incoming request: GET /api/test
+20:36:32.825 [main] INFO  [test-id] c.g.interceptor.LoggingInterceptor - Response status: 500
+20:36:32.827 [main] INFO  [test-id] c.g.interceptor.LoggingInterceptor - Response status: 200
