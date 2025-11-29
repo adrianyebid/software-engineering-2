@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const pythonClient = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: "http://python-backend:8000",
   headers: { "Content-Type": "application/json" },
 });
 

@@ -8,10 +8,11 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:8080',
+        target: 'http://java-backend:8080', // <-- ¡DEBE SER ESTO!
         changeOrigin: true,
         secure: false,
       },
     },
   },
 });
+

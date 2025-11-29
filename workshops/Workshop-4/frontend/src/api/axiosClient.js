@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-  baseURL: "http://localhost:8080/api/v1",
+  baseURL: "/api/v1", // <-- ¡SOLO LA RUTA!
   headers: { "Content-Type": "application/json" },
 });
 
@@ -24,17 +24,15 @@ axiosClient.interceptors.response.use(
       const refreshToken = localStorage.getItem("refreshToken");
       if (refreshToken) {
         try {
-          const res = await axios.post("http://localhost:8080/api/v1/auth/refresh", {
-            refreshToken,
-          });
+          // Usar axiosClient para que pase por el proxy
+          const res = await axiosClient.post("/auth/refresh", { refreshToken });
           const { accessToken } = res.data;
           localStorage.setItem("accessToken", accessToken);
-          axiosClient.defaults.headers.Authorization = `Bearer ${accessToken}`;
           originalRequest.headers.Authorization = `Bearer ${accessToken}`;
           return axiosClient(originalRequest); // reintenta la request original
         } catch (err) {
-          // si falla el refresh → logout
-          localStorage.clear();
+          localStorage.removeItem("accessToken");
+          localStorage.removeItem("refreshToken");
           window.location.href = "/";
         }
       }
@@ -42,5 +40,6 @@ axiosClient.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
 
 export default axiosClient;

@@ -1,28 +1,36 @@
+version: "3.9"
+
 services:
   postgres:
     image: postgres:15
     container_name: postgres
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=root
-      - POSTGRES_DB=gymdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: gymdb
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d gymdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
 
   java-backend:
     build: ./java-backend
     ports:
       - "8080:8080"
     environment:
-      - JWT_SECRET=Zk9pQ2x1bWJpUmFuZG9tU2VjcmV0S2V5MTIzNDU2Nzg=
-      - JWT_EXPIRATION=60
-      - GYMAPP_DB_PASSWORD=root
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/gymdb
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=root
+      JWT_SECRET: Zk9pQ2x1bWJpUmFuZG9tU2VjcmV0S2V5MTIzNDU2Nzg=
+      JWT_EXPIRATION: 60
+      GYMAPP_DB_PASSWORD: root
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/gymdb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: root
     depends_on:
       - postgres
 
@@ -30,6 +38,8 @@ services:
     build: ./python-backend
     ports:
       - "8000:8000"
+    depends_on:
+      - postgres
 
   frontend:
     build: ./frontend

@@ -1,0 +1,38 @@
+{
+  "name": "Full Stack Gym App (Docker Compose)",
+  "workspaceFolder": "/workspaces/prueba",
+
+  "dockerComposeFile": [
+    "../workshops/Workshop-4/docker-compose.yml",
+    "../workshops/Workshop-4/docker-compose.override.yml"
+  ],
+
+  "service": "java-backend",
+  "shutdownAction": "stopCompose",
+
+  "forwardPorts": [
+    5432,
+    8080,
+    8000,
+    5173
+  ],
+
+  // 👇 Post create command para instalar docker CLI
+  "postCreateCommand": "apt-get update && apt-get install -y docker.io && echo 'Container setup complete.'",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "redhat.java",
+        "vscjava.vscode-maven",
+        "ms-python.python",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  }
+}
