@@ -1,0 +1,50 @@
+18:53:43.830 [main] INFO  [e6294dfc-8ea3-4946-ac76-565bcf66cfee] c.g.interceptor.LoggingInterceptor - Incoming request: GET /api/test
+18:53:43.841 [main] INFO  [test-id] c.g.interceptor.LoggingInterceptor - Response status: 500
+18:53:43.846 [main] INFO  [test-id] c.g.interceptor.LoggingInterceptor - Response status: 200
+18:56:51.997 [main] INFO  [86682349-549b-4cc0-b2af-a232f1978a6e] c.g.interceptor.LoggingInterceptor - Incoming request: GET /api/test
+18:56:52.003 [main] INFO  [test-id] c.g.interceptor.LoggingInterceptor - Response status: 500
+18:56:52.009 [main] INFO  [test-id] c.g.interceptor.LoggingInterceptor - Response status: 200
+18:58:42.438 [main] INFO  [14b1bb01-6f3b-4dde-8f75-8762481e1244] c.g.interceptor.LoggingInterceptor - Incoming request: GET /api/test
+18:58:42.448 [main] INFO  [test-id] c.g.interceptor.LoggingInterceptor - Response status: 500
+18:58:42.451 [main] INFO  [test-id] c.g.interceptor.LoggingInterceptor - Response status: 200
+19:00:14.145 [main] INFO  [85e801df-f7cc-46fd-9c96-ab66be48b77f] c.g.interceptor.LoggingInterceptor - Incoming request: GET /api/test
+19:00:14.152 [main] INFO  [test-id] c.g.interceptor.LoggingInterceptor - Response status: 500
+19:00:14.157 [main] INFO  [test-id] c.g.interceptor.LoggingInterceptor - Response status: 200
+19:02:32.043 [background-preinit] INFO  [] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+19:02:32.116 [main] INFO  [] com.gymapp.GymAppApplication - Starting GymAppApplication using Java 21.0.7 with PID 24400 (C:\Users\ASUS\Desktop\EPAM-COURSE\Spring-boot\spring-boot\target\classes started by ASUS in C:\Users\ASUS\Desktop\EPAM-COURSE\Spring-boot\spring-boot)
+19:02:32.117 [main] INFO  [] com.gymapp.GymAppApplication - The following 1 profile is active: "local"
+19:02:33.890 [main] INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+19:02:33.995 [main] INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 93 ms. Found 4 JPA repository interfaces.
+19:02:35.000 [main] INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+19:02:35.027 [main] INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+19:02:35.030 [main] INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+19:02:35.030 [main] INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+19:02:35.110 [main] INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+19:02:35.112 [main] INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2943 ms
+19:02:35.783 [main] INFO  [] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+19:02:35.892 [main] INFO  [] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.33.Final
+19:02:35.937 [main] INFO  [] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+19:02:36.236 [main] INFO  [] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+19:02:36.265 [main] INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+19:02:36.501 [main] INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@391e85df
+19:02:36.504 [main] INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+19:02:36.576 [main] INFO  [] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+19:02:37.668 [main] INFO  [] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+19:02:37.805 [main] INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+19:02:38.489 [main] INFO  [] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+19:02:41.351 [main] INFO  [] o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+19:02:41.561 [main] INFO  [] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+19:02:41.583 [main] INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+19:02:41.614 [main] INFO  [] com.gymapp.GymAppApplication - Started GymAppApplication in 10.004 seconds (process running for 10.749)
+19:02:50.865 [SpringApplicationShutdownHook] INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+19:02:50.879 [tomcat-shutdown] INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+19:02:50.885 [SpringApplicationShutdownHook] INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+19:02:50.888 [SpringApplicationShutdownHook] INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+19:02:50.892 [SpringApplicationShutdownHook] INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
