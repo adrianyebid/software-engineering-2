@@ -5,7 +5,7 @@ export default function LayoutTrainer() {
   return (
     <div className="min-h-screen bg-gray-100">
       <NavbarTrainer />
-      <main className="p-6">
+      <main className="0">
         <Outlet />
       </main>
     </div>

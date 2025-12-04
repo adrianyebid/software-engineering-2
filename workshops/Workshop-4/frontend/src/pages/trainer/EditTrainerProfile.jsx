@@ -2,71 +2,229 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getTrainerProfile, updateTrainerProfile } from "../../api/trainerService";
 
+// Función de validación para asegurar solo letras y espacios (reutilizada)
+const validateName = (name) => {
+  const nameRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{2,}$/;
+  return nameRegex.test(name);
+};
+
+// --- COMPONENTE AUXILIAR EXTRAÍDO PARA ESTABILIDAD ---
+// Este componente auxiliar recibe el estado y los handlers por props.
+const FormInput = ({ 
+    name, 
+    placeholder, 
+    readOnly = false, 
+    form, 
+    handleChange, 
+    validationError 
+}) => {
+  const isError = validationError[name];
+  
+  return (
+    <div className="mb-4">
+      <input
+        type="text"
+        name={name}
+        id={name} // Añadido id para accesibilidad
+        placeholder={placeholder}
+        value={form[name]}
+        onChange={handleChange}
+        readOnly={readOnly}
+        className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 transition duration-150 bg-white 
+          ${readOnly ? "bg-gray-100 cursor-not-allowed" : ""}
+          ${isError 
+            ? "border-red-500 focus:ring-red-600" 
+            : "border-gray-300 focus:ring-green-600" // Acento verde del Trainer
+          }`}
+      />
+      {isError && (
+        <p className="text-red-500 text-xs mt-1 font-semibold">{isError}</p>
+      )}
+    </div>
+  );
+};
+// ----------------------------------------------------
+
+
 export default function EditTrainerProfile() {
   const { username } = useParams();
   const navigate = useNavigate();
+
   const [form, setForm] = useState({
-    username: "",
+    username: username || "",
     firstName: "",
     lastName: "",
     isActive: true,
   });
 
+  const [loading, setLoading] = useState(true); // Estado de carga inicial
+  const [saving, setSaving] = useState(false); // Estado de guardado
+  const [apiError, setApiError] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
+  const [validationError, setValidationError] = useState({});
+
+  // 1. Carga inicial del perfil
   useEffect(() => {
-    getTrainerProfile(username).then((res) => {
-      const { firstName, lastName, isActive } = res.data;
-      setForm({ username, firstName, lastName, isActive });
-    });
+    setLoading(true);
+    getTrainerProfile(username)
+      .then((res) => {
+        const { firstName, lastName, isActive } = res.data;
+        setForm({ username, firstName, lastName, isActive });
+        setLoading(false);
+      })
+      .catch(() => {
+        setApiError("Error al cargar el perfil del Trainer. Intente más tarde.");
+        setLoading(false);
+      });
   }, [username]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+    // La lógica de actualización sigue siendo correcta:
     setForm({ ...form, [name]: type === "checkbox" ? checked : value });
+    setValidationError({ ...validationError, [name]: null });
+    setApiError(null);
+    setSuccessMessage(null);
+  };
+  
+  // 2. Validación de formulario antes de enviar
+  const validateForm = () => {
+    let errors = {};
+    if (!validateName(form.firstName)) {
+      errors.firstName = "El nombre solo debe contener letras (mín. 2).";
+    }
+    if (!validateName(form.lastName)) {
+      errors.lastName = "El apellido solo debe contener letras (mín. 2).";
+    }
+
+    setValidationError(errors);
+    return Object.keys(errors).length === 0;
   };
 
+  // 3. Envío del formulario
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setApiError(null);
+    setSuccessMessage(null);
+
+    if (!validateForm()) {
+      return;
+    }
+
+    setSaving(true);
+
     try {
       await updateTrainerProfile(form);
-      alert("Perfil actualizado");
-      navigate(`/trainers/${username}`);
-    } catch {
-      alert("Error al actualizar");
+      setSuccessMessage("✅ Perfil actualizado exitosamente.");
+      // Redirección opcional después de un breve tiempo para mostrar el éxito
+      setTimeout(() => navigate(`/trainers/${username}`), 1500);
+    } catch (err) {
+      setApiError("❌ Error al guardar los cambios. Verifique los datos e intente de nuevo.");
+    } finally {
+      setSaving(false);
     }
   };
-
+  
   return (
-    <div className="max-w-xl mx-auto mt-10 bg-white p-6 rounded shadow">
-      <h2 className="text-2xl font-bold mb-4">Editar perfil</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          name="firstName"
-          value={form.firstName}
-          onChange={handleChange}
-          placeholder="Nombre"
-          className="w-full mb-3 p-2 border rounded"
-        />
-        <input
-          name="lastName"
-          value={form.lastName}
-          onChange={handleChange}
-          placeholder="Apellido"
-          className="w-full mb-3 p-2 border rounded"
-        />
-        <label className="block mb-3">
-          <input
-            type="checkbox"
-            name="isActive"
-            checked={form.isActive}
-            onChange={handleChange}
-            className="mr-2"
-          />
-          Activo
-        </label>
-        <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded">
-          Guardar cambios
-        </button>
-      </form>
+    <div className="min-h-screen flex items-center justify-center bg-gray-900 p-4">
+      <div className="bg-white p-8 rounded-xl shadow-2xl w-full max-w-lg">
+        <h2 className="text-3xl font-extrabold text-center mb-6 text-gray-800">
+          ✏️ Editar Perfil de Trainer
+        </h2>
+
+        {/* --- Mensajes de Feedback --- */}
+        {apiError && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-6 font-medium" role="alert">
+            {apiError}
+          </div>
+        )}
+        
+        {successMessage && (
+          <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-6 font-medium" role="alert">
+            {successMessage}
+          </div>
+        )}
+        {/* --------------------------- */}
+        
+        {loading ? (
+            // Loader de carga inicial
+            <div className="flex items-center justify-center py-10 text-green-600">
+                <span className="animate-spin text-3xl mr-3">🌀</span>
+                <p className="text-xl font-semibold">Cargando perfil...</p>
+            </div>
+        ) : (
+            <form onSubmit={handleSubmit}>
+                {/* Campo de Usuario (solo lectura) */}
+                <div className="mb-4">
+                    <label className="text-sm font-medium text-gray-700 block mb-1">Usuario</label>
+                    <input
+                        type="text"
+                        value={form.username}
+                        readOnly
+                        className="w-full p-3 border rounded-lg bg-gray-100 cursor-not-allowed text-gray-600 font-mono"
+                    />
+                </div>
+                
+                {/* Nombre y Apellido */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <FormInput 
+                        name="firstName" 
+                        placeholder="Nombre" 
+                        form={form} 
+                        handleChange={handleChange} 
+                        validationError={validationError}
+                    />
+                    <FormInput 
+                        name="lastName" 
+                        placeholder="Apellido" 
+                        form={form} 
+                        handleChange={handleChange} 
+                        validationError={validationError}
+                    />
+                </div>
+                
+                {/* Checkbox Activo */}
+                <div className="flex items-center space-x-4 mb-6 mt-4 p-3 border border-gray-300 rounded-lg bg-gray-50">
+                    <input
+                        type="checkbox"
+                        name="isActive"
+                        id="isActive"
+                        checked={form.isActive}
+                        onChange={handleChange}
+                        className="w-5 h-5 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500"
+                    />
+                    <label htmlFor="isActive" className="text-base font-medium text-gray-700">
+                        Trainer Activo (Permite asignar clases)
+                    </label>
+                    <span className={`px-3 py-1 text-xs font-semibold rounded-full ml-auto ${
+                        form.isActive ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                    }`}>
+                        {form.isActive ? 'ACTIVO' : 'INACTIVO'}
+                    </span>
+                </div>
+                
+                {/* Botón de Guardar */}
+                <button 
+                    type="submit" 
+                    disabled={saving}
+                    className={`w-full font-bold py-3 rounded-lg shadow-lg transition duration-200 ease-in-out mt-4 transform hover:scale-[1.005] flex items-center justify-center
+                                ${saving 
+                                    ? 'bg-gray-400 cursor-not-allowed' 
+                                    : 'bg-green-600 hover:bg-green-700 text-white'}`}
+                >
+                    {saving ? (
+                        <>
+                            <span className="animate-spin mr-3">💾</span> Guardando...
+                        </>
+                    ) : (
+                        <>
+                            <span className="mr-2">✔️</span> Guardar Cambios
+                        </>
+                    )}
+                </button>
+            </form>
+        )}
+      </div>
     </div>
   );
 }
