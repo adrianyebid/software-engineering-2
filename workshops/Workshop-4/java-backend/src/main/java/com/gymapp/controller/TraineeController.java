@@ -9,6 +9,7 @@ import com.gymapp.service.trainee.TraineeService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,14 +17,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/trainees")
+@RequiredArgsConstructor
 @Tag(name = "Trainees", description = "Operations related to trainee profiles")
 public class TraineeController {
 
     private final TraineeService traineeService;
-
-    public TraineeController(TraineeService traineeService) {
-        this.traineeService = traineeService;
-    }
 
     @CreateOperation(summary = "Register trainee", description = "Creates a new trainee profile")
     @PostMapping

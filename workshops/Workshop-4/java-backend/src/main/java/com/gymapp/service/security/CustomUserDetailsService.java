@@ -1,39 +1,45 @@
 package com.gymapp.service.security;
 
-import com.gymapp.model.Role;
-import com.gymapp.repository.TraineeRepository;
-import com.gymapp.repository.TrainerRepository;
+import com.gymapp.model.User;
+import com.gymapp.service.security.providers.UserProvider;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
+@RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
 
-    private final TrainerRepository trainerRepo;
-    private final TraineeRepository traineeRepo;
-
-    public CustomUserDetailsService(TrainerRepository trainerRepo, TraineeRepository traineeRepo) {
-        this.trainerRepo = trainerRepo;
-        this.traineeRepo = traineeRepo;
-    }
+    // Inyección de la lista de estrategias
+    private final List<UserProvider> userProviders;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return trainerRepo.findByUsername(username)
-                .map(t -> buildUserDetails(t.getUsername(), t.getPassword(), t.getIsActive(), Role.TRAINER))
-                .or(() -> traineeRepo.findByUsername(username)
-                        .map(tr -> buildUserDetails(tr.getUsername(), tr.getPassword(), tr.getIsActive(), Role.TRAINEE)))
+        User user = findUserInRepositories(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
+
+        return mapToUserDetails(user);
     }
 
-    private UserDetails buildUserDetails(String username, String password, Boolean active, Role role) {
+    private Optional<User> findUserInRepositories(String username) {
+        return userProviders.stream()
+                .map(provider -> provider.findUser(username))
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .findFirst();
+    }
+
+    private UserDetails mapToUserDetails(User user) {
         return org.springframework.security.core.userdetails.User.builder()
-                .username(username)
-                .password(password)
-                .disabled(!Boolean.TRUE.equals(active))
-                .authorities("ROLE_" + role.name())
+                .username(user.getUsername())
+                .password(user.getPassword())
+                .disabled(!Boolean.TRUE.equals(user.getIsActive()))
+                .authorities("ROLE_" + user.getRole().name()) // Polimorfismo
                 .build();
     }
 }

@@ -8,11 +8,15 @@ import java.util.Map;
 
 public class ExceptionLogger {
 
+    private static Logger log = LoggerFactory.getLogger(ExceptionLogger.class);
+
     private ExceptionLogger() {
         throw new IllegalStateException("Utility class");
     }
 
-    private static final Logger log = LoggerFactory.getLogger(ExceptionLogger.class);
+    static void setLogger(Logger newLogger) {
+        log = newLogger;
+    }
 
     public static void logValidationError(HttpServletRequest request, Map<String, String> errors) {
         log.warn("Validation error at {}: {}", request.getRequestURI(), errors);
@@ -32,5 +36,18 @@ public class ExceptionLogger {
 
     public static void logUnexpectedError(HttpServletRequest request, Exception ex) {
         log.error("Unexpected error at {}: {}", request.getRequestURI(), ex.getMessage(), ex);
+    }
+
+
+    public static void logAuthFailure(HttpServletRequest request, String message) {
+        log.warn("Authentication failed at {}: {}", request.getRequestURI(), message);
+    }
+
+    public static void logUnauthorizedAccess(HttpServletRequest request, String message) {
+        log.warn("Unauthorized access at {}: {}", request.getRequestURI(), message);
+    }
+
+    public static void logTooManyRequests(HttpServletRequest request, String message) {
+        log.warn("Too many requests (Brute Force) at {}: {}", request.getRequestURI(), message);
     }
 }

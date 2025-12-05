@@ -1,5 +1,6 @@
 package com.gymapp.config;
 
+import com.gymapp.utils.PathsConstants;
 import com.gymapp.interceptor.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +19,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Configuration
@@ -43,16 +45,16 @@ public class SecurityConfig {
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         // Endpoints públicos de autenticación
-                        .requestMatchers(HttpMethod.POST, "/api/v1/auth/login").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/v1/auth/refresh").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/v1/auth/logout").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/v1/trainees").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/v1/trainers").permitAll()
+                        .requestMatchers(HttpMethod.POST, PathsConstants.API.Auth.LOGIN).permitAll()
+                        .requestMatchers(HttpMethod.POST, PathsConstants.API.Auth.REFRESH).permitAll()
+                        .requestMatchers(HttpMethod.POST, PathsConstants.API.Auth.LOGOUT).permitAll()
+                        .requestMatchers(HttpMethod.POST, PathsConstants.API.TRAINEES).permitAll()
+                        .requestMatchers(HttpMethod.POST, PathsConstants.API.TRAINERS).permitAll()
 
                         // Endpoints públicos de Swagger/OpenAPI
-                        .requestMatchers("/swagger-ui/**").permitAll()
-                        .requestMatchers("/v3/api-docs/**").permitAll()
-                        .requestMatchers("/swagger-ui.html").permitAll()
+                        .requestMatchers(PathsConstants.Docs.SWAGGER_UI).permitAll()
+                        .requestMatchers(PathsConstants.Docs.API_DOCS).permitAll()
+                        .requestMatchers(PathsConstants.Docs.SWAGGER_UI_HTML).permitAll()
 
                         .anyRequest().authenticated()
                 );
@@ -63,12 +65,13 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("http://localhost:5173")); // tu frontend
-        config.setAllowedMethods(List.of("GET","POST","PUT","DELETE","PATCH","OPTIONS"));
-        config.setAllowedHeaders(List.of("Authorization","Content-Type"));
-        config.setAllowCredentials(true);
+        config.setAllowedOrigins(List.of(PathsConstants.Frontend.LOCAL));
+        config.setAllowedMethods(Arrays.asList(PathsConstants.Methods.getAllMethodsArray()));
+        config.setAllowedHeaders(Arrays.asList(PathsConstants.Headers.getCorsAllowedHeadersArray()));
+        config.setAllowCredentials(PathsConstants.Cors.ALLOW_CREDENTIALS);
+
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", config);
+        source.registerCorsConfiguration(PathsConstants.Cors.ALL_PATHS, config);
         return source;
     }
 

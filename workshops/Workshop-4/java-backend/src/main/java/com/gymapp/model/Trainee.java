@@ -35,4 +35,9 @@ public class Trainee extends User {
     )
     @Builder.Default
     private Set<Trainer> trainers = new HashSet<>();
+
+    @Override
+    public Role getRole() {
+        return Role.TRAINEE;
+    }
 }

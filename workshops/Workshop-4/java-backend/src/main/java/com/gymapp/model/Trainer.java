@@ -29,4 +29,9 @@ public class Trainer extends User {
     @ManyToMany(mappedBy = "trainers")
     @Builder.Default
     private Set<Trainee> trainees = new HashSet<>();
+
+    @Override
+    public Role getRole() {
+        return Role.TRAINER;
+    }
 }

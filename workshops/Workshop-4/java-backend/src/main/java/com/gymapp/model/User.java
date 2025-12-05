@@ -37,4 +37,6 @@ public abstract class User {
         if (Boolean.FALSE.equals(this.isActive)) return;
         this.isActive = false;
     }
+
+    public abstract Role getRole();
 }

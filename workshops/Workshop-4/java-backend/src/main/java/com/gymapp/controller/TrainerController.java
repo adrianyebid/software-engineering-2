@@ -14,6 +14,7 @@ import com.gymapp.service.trainer.TrainerService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,15 +24,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/trainers")
+@RequiredArgsConstructor
 @Tag(name = "Trainers", description = "Operations related to trainer profiles")
 public class TrainerController {
 
     private final TrainerService trainerService;
-
-    public TrainerController(TrainerService trainerService) {
-        this.trainerService = trainerService;
-    }
-
 
     @CreateOperation(summary = "Register trainer", description = "Creates a new trainer profile")
     @PostMapping
