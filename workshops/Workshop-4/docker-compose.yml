@@ -25,21 +25,26 @@ services:
     ports:
       - "8080:8080"
     environment:
-      JWT_SECRET: Zk9pQ2x1bWJpUmFuZG9tU2VjcmV0S2V5MTIzNDU2Nzg=
+      JWT_SECRET: Zk9pQ2x1bWJpQnJhbmRvbVNlY3JldEtleTEyMzQ1Njc4
       JWT_EXPIRATION: 60
       GYMAPP_DB_PASSWORD: root
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/gymdb
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: root
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
 
   python-backend:
     build: ./python-backend
     ports:
       - "8000:8000"
+    environment:
+      # Para producción usarías Postgres aquí
+      DATABASE_URL: postgresql://postgres:root@postgres:5432/gymdb
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
 
   frontend:
     build: ./frontend
@@ -48,6 +53,17 @@ services:
     depends_on:
       - java-backend
       - python-backend
+
+  # === Servicio OPCIONAL PARA TESTS (pytest) ===
+  python-tests:
+    build: ./python-backend
+    command: pytest -q
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      # Tests seguirán usando SQLite (aislado)
+      DATABASE_URL: sqlite:///./test_notes.db
 
 volumes:
   postgres_data:
