@@ -12,6 +12,12 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
       },
+
+          '/api-python': {
+      target: 'http://python-backend:8000', // tu backend Python local
+      changeOrigin: true,
+      secure: false,
+    },
     },
   },
 });

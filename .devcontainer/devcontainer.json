@@ -1,6 +1,6 @@
 {
   "name": "Full Stack Gym App (Docker Compose)",
-  "workspaceFolder": "/workspaces/prueba",
+  "workspaceFolder": "/workspaces/software-engineering-2",
 
   "dockerComposeFile": [
     "../workshops/Workshop-4/docker-compose.yml",
@@ -10,15 +10,9 @@
   "service": "java-backend",
   "shutdownAction": "stopCompose",
 
-  "forwardPorts": [
-    5432,
-    8080,
-    8000,
-    5173
-  ],
+  "forwardPorts": [5432, 8080, 8000, 5173],
 
-  // 👇 Post create command para instalar docker CLI
-  "postCreateCommand": "apt-get update && apt-get install -y docker.io && echo 'Container setup complete.'",
+  "postCreateCommand": "echo 'Container setup complete.'",
 
   "customizations": {
     "vscode": {
